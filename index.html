@@ -1,14 +1,130 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <title>Hans's webpage 123</title>
-        <link rel="stylesheet" type="text/css" href="style.css">
-    </head>
+<head>
+  <title>Proto</title>
+  <link rel="stylesheet" type="text/css" href="main.css">
+  <link rel="stylesheet" href="https://unpkg.com/tachyons@4.7.0/css/tachyons.min.css"/>
+  <script src="https://d3js.org/d3.v4.min.js"></script>
+  
+</head>
 
-    <body>
-        <h1>Welcome to my fantastic unicorn universe page</h1>
-        <p>This is a paragraph</p>
-    </body>
+<body style="margin: 0; font-family: sans-serif; font-weight: normal;">
 
+  <!--Header-->
+  <div style="display: flex; justify-content: center; align-items: center; flex-direction: column; background-color: #1b1a1a; text-align: center;background-size: cover; height: 80vh; color: white; padding: 50px;">
+    <h1 style="width: 70%; font-weight: normal; padding-bottom: 40px;">How is your business affected by currency risk?</h1>
+    <h4 style="width: 70%; font-weight: normal; line-height: 1.75">Valutarisikokalkulatoren er et enkelt verktøy du kan bruke til å danne deg et bilde av hvilken valutarisiko bedriften din eventuelt utsettes for i forbindelse med eksport eller import. Når du fyller inn årlige inntekter (hvis du er eksportør) eller kostnader (hvis du er importør) i utenlandsk valuta, får du en vurdering av potensiell risiko forbundet med endringer i valutakursen, det vil si valutarisikoen. Vi i DNB hjelper deg gjerne med å se nærmere på en eventuell valutarisiko og komme med forslag til tiltak.</h4>
+    <h5 style="font-weight: normal; padding: 10px; background-color: #efa318">A service by Markets</h5>
+  </div>
+
+  <div style="display: flex;background-color; 100vw;justify-content: space-between;height: 3vh; color: black; margin: 1%;"></div>
+
+  <!--Step 1: Revenues-->
+
+  <div style="height: 60vh; background-color:#014e50; text-align: center; color: white; padding: 2%;">
+    <h3 style="color: rgba(255,255,255,0.5); margin-bottom: 0; font-weight: normal;">Step 1</h3>
+    <h1 style="margin: 0; padding-bottom: 20px; font-weight: normal; color: #efa318">REVENUES</h1>
+    <p>Fill in yearly revenue</p>
+    <form id="rev-form">
+      <input type="number" name="revenues" value="300000000" step="1000000" min="0" id="revenues" placeholder="e.g. 20 million" style="margin-right: 0.5%;">NOK
+    </form>
+
+    <p>Currency composition revenues</p>
+    <form id="in-form" action="" method="POST" style="display: flex; justify-content: center; flex-direction: column; ">
+      <div><span style="font-size: 20px;">🇳🇴</span><span> NOK</span><input type="number" name="nok" step="10" min="0" max="100" id="nok_in" value="0" style="margin: 0.5%;" maxlength="3"><span>%</span></div>
+      <div><span style="font-size: 20px;">🇸🇪</span><span> SEK</span><input type="number" name="sek" step="10" min="0" max="100" id="sek_in" value="50"  style="margin: 0.5%;"><span>%</span></div>
+      <div><span style="font-size: 20px;">🇩🇰</span><span> DKK</span><input type="number" name="dkk" step="10" min="0" max="100" id="dkk_in" value="30"  style="margin: 0.5%;"><span>%</span></div>
+      <div><span style="font-size: 20px;">🇺🇸</span><span> USD</span><input type="number" name="usd" step="10" min="0" max="100" id="usd_in" value="0"  style="margin: 0.5%;"><span>%</span></div>
+      <div><span style="font-size: 20px;">🇪🇺</span><span> EUR</span><input type="number" name="eur" step="10" min="0" max="100" id="eur_in" value="20"  style="margin: 0.5%;"><span>%</span></div>
+    </form>
+  </div>
+
+<div style="display: flex;background-color; 100vw;justify-content: space-between;height: 3vh; color: black; margin: 1%;"></div>
+
+
+
+
+  <!--Step 2: Expences-->
+
+  <div style="height: 60vh; background-color: #1b1a1a; text-align: center; color: white; padding: 2%;">
+    <h3 style="color: rgba(255,255,255,0.5); margin-bottom: 0; font-weight: normal;">Step 2</h3>
+    <h1 style="margin: 0; padding-bottom: 20px; font-weight: normal; color: #efa318">EXPENSES</h1>
+    <p>Fill in yearly expences</p>
+    <form id="exp-form">
+      <input type="number" name="expences" value="80000000" step="1000000" min="0" id="expences" placeholder="e.g. 3 million" style="margin-right: 0.5%;">NOK
+    </form>
+
+    <p>Currency composition expenses</p>
+    <form id="out-form" style="display: flex; justify-content: center; flex-direction: column; ">
+      <div><span style="font-size: 20px;">🇳🇴</span><span> NOK</span><input type="number" name="nok" step="10" min="0" max="100" id="nok_out" value="100"  style="margin: 0.5%;" maxlength="3"><span>%</span></div>
+      <div><span style="font-size: 20px;">🇸🇪</span><span> SEK</span><input type="number" name="sek" step="10" min="0" max="100" id="sek_out" value="0"  style="margin: 0.5%;"><span>%</span></div>
+      <div><span style="font-size: 20px;">🇩🇰</span><span> DKK</span><input type="number" name="dkk" step="10" min="0" max="100" id="dkk_out" value="0"  style="margin: 0.5%;"><span>%</span></div>
+      <div><span style="font-size: 20px;">🇺🇸</span><span> USD</span><input type="number" name="usd" step="10" min="0" max="100" id="usd_out" value="0"  style="margin: 0.5%;"><span>%</span></div>
+      <div><span style="font-size: 20px;">🇪🇺</span><span> EUR</span><input type="number" name="eur" step="10" min="0" max="100" id="eur_out" value="0"  style="margin: 0.5%;"><span>%</span></div>
+    </form>
+  </div>
+
+  <div style="display: flex;background-color; 100vw;justify-content: space-between;height: 3vh; color: black; margin: 1%;"></div>
+
+
+
+
+  <!--Step 3: Hedge Ratio-->
+
+  <div style="height: 30vh; background-color:#014e50; text-align: center; color: white; padding: 2%;">
+    <h3 style="color: rgba(255,255,255,0.5); margin-bottom: 0; font-weight: normal;">Step 3</h3>
+    <h1 style="margin: 0; padding-bottom: 20px; font-weight: normal; color: #efa318">HEDGE RATIO</h1>
+    <div><span style="font-size: 20px;"> Years: </span><input type="number" name="years" step="1" min="0" max="5" id="years" value="0"  style="margin: 0.5%; "><span></span></div>
+    <div><span style="font-size: 20px;"> Ratio: </span><input type="number" name="hedge-ratio" step="10" min="0" max="100" id="hedge-ratio" value="0"  style="margin: 0.5%;"><span>%</span></div>
+  </div>
+
+
+
+
+ <!--Step 4: Calculate Risk-->
+
+  <div style="height: 50vh; max-height: 100vh;background-color:white; text-align: center; color:#003a3c; padding: 2%;">
+    <input type="button" style="background: #003a3c;border: none;padding: 10px 40px;color: white;border-radius: 3px;font-size: 1rem;margin-top: 10px;" onclick="submit_button()" value="CALCULATE RISK">
+    
+    <svg id="svg" width="900" height="500"></svg>
+
+  </div>
+
+
+  <!--<input id="rangeSlider" min="0" value="0" max="100" type="range" value="Range Slider" style="display: block; margin: auto;">-->
+
+
+  <!--Currency table   -->
+<!--   <table id="currencyTable">
+      <thead>
+          <tr>
+              <th>Currency</th>
+              <th>Value</th>
+          </tr>
+      </thead>
+      <tbody></tbody>
+  </table> -->
+
+
+  <!--Range slider for svg -->
+<!--     <input id="rangeSlider" type="range" value="Range Slider">
+    <span id="rangeSlider-value">…</span>
+
+    <h2>Prognose på fremtidige kontantstrømmer</h2>
+    <div id="vifte"></div>
+    <div id="circleContainer"></div>
+  -->
+<div style="height: 10vw; display: block;">
+<footer class="pv4 ph3 ph5-m ph6-l mid-gray">
+  <div class="tc mt3">
+      Have any questions? Ask <a
+      href="https://www.linkedin.com/in/luuk-op-het-veld-a534232/?ppe=1"
+      target="_blank" class="f6 dib ph2 link mid-gray dim" style="text-decoration: underline";>Luuk</a> for help!.
+  </div>
+  <small class="f6 db tc">© 2017. All Rights Reserved</small>
+</footer>
+</div>
+
+<script type="text/javascript" src="script.js"></script>
+</body>
 </html>
